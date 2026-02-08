@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #1a1a1a;
+    --accent-color: #0052cc;
+    --border-color: #e0e0e0;
+    --hover-bg: #e8e8e8;
+    --card-bg: #ffffff;
+    
+    --nav-font-size: 1rem;
+    --title-font-size: 1.7rem;
+    --content-font-size: 1rem;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f0f0f;
+    --text-color: #e0e0e0;
+    --accent-color: #ff9500;
+    --border-color: #2a2a2a;
+    --hover-bg: #1a1a1a;
+    --card-bg: #1a1a1a;
+}
+
+body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem 1.5rem;
+    font-size: 17px;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Blog Page Container */
+.blog-page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Theme Toggle Container - Positioned at top right */
+.blog-theme-toggle-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+/* Dark Mode Toggle - Engraved Colorless Button */
+.theme-toggle {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+    
+    /* Engraved effect */
+    box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.15),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .theme-toggle {
+    box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.5),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(0.95);
+}
+
+.theme-toggle:active {
+    transform: scale(0.9);
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+/* Sun icon - colorless */
+.theme-icon.sun {
+    background: var(--text-color);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.theme-icon.sun::before,
+.theme-icon.sun::after {
+    content: '';
+    position: absolute;
+    background: var(--text-color);
+    opacity: 0.6;
+}
+
+.theme-icon.sun::before {
+    width: 2px;
+    height: 26px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.theme-icon.sun::after {
+    width: 26px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Moon icon - colorless */
+.theme-icon.moon {
+    background: transparent;
+    border-radius: 50%;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    box-shadow: 
+        inset -4px -2px 0 0 var(--text-color);
+    opacity: 0.6;
+}
+
+/* Page transitions */
+.page {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typography */
+section {
+    margin: 4rem 0;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: var(--title-font-size);
+    margin: 2rem 0 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+    color: #666;
+}
+
+[data-theme="dark"] em {
+    color: #999;
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Blog Post Styles */
+.blog-post {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    transition: opacity 0.2s ease, color 0.5s ease;
+}
+
+.back-link:hover {
+    opacity: 0.7;
+}
+
+.blog-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    transition: border-color 0.5s ease;
+}
+
+.blog-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    transition: color 0.5s ease;
+}
+
+.blog-meta {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.5s ease;
+}
+
+[data-theme="dark"] .blog-meta {
+    color: #999;
+}
+
+.blog-content {
+    line-height: 1.8;
+}
+
+.blog-content h2 {
+    font-size: 1.6rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    transition: color 0.5s ease;
+}
+
+.blog-content h3 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    transition: color 0.5s ease;
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+    transition: color 0.5s ease;
+}
+
+.blog-content ul,
+.blog-content ol {
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.blog-content li {
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.7;
+    transition: color 0.5s ease;
+}
+
+.blog-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    transition: color 0.5s ease;
+}
+
+.blog-content ol {
+    counter-reset: item;
+}
+
+.blog-content ol li {
+    counter-increment: item;
+}
+
+.blog-content ol li::before {
+    content: counter(item) ".";
+    position: absolute;
+    left: 0.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    transition: color 0.5s ease;
+}
+
+.blog-content blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background: var(--hover-bg);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+    font-style: italic;
+    color: #555;
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+[data-theme="dark"] .blog-content blockquote {
+    color: #bbb;
+}
+
+.blog-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    transition: border-color 0.5s ease;
+}
+
+.blog-footer p {
+    color: #666;
+    font-size: 0.95rem;
+    transition: color 0.5s ease;
+}
+
+[data-theme="dark"] .blog-footer p {
+    color: #999;
+}
+
+/* Highlighted sections */
+.highlight-section {
+    background: var(--hover-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    margin: 2rem 0;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.highlight-section h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.5s ease;
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    transition: border-color 0.5s ease, color 0.5s ease;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.5s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+[data-theme="dark"] footer {
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --nav-font-size: 0.9rem;
+        --title-font-size: 1.5rem;
+    }
+    
+    body {
+        padding: 0 1rem 1.5rem 1rem;
+        font-size: 16px;
+    }
+    
+    /* Ensure theme toggle stays visible and functional */
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+    
+    /* Make sure moon/sun icons stay correct size */
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-icon.moon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .blog-theme-toggle-container {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .blog-title {
+        font-size: 2rem;
+    }
+    
+    .blog-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .blog-content blockquote {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --nav-font-size: 0.85rem;
+        --title-font-size: 1.3rem;
+    }
+    
+    body {
+        padding: 0 0.75rem 1rem 0.75rem;
+        font-size: 15px;
+    }
+    
+    /* Position theme toggle to the right on small screens */
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-icon.moon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .blog-theme-toggle-container {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    
+    .blog-title {
+        font-size: 1.75rem;
+    }
+    
+    .blog-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .blog-content blockquote {
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
+}
+
+::selection {
+    background: var(--hover-bg);
+    color: var(--text-color);
+}

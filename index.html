@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4rynv - Aryan Vyapari</title>
+<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="header-left">
+            <img src="images/IMG_8637.png" alt="Profile" class="profile-pic">
+            <div class="header-text">
+                <div class="logo">4rynv</div>
+                <div class="tagline">try, fail, learn, repeat</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-theme-container">
+    <nav>
+        <ul>
+            <li><a onclick="navigateTo('about')" class="nav-link script-toggle-nav active" data-latin="ABOUT" data-devanagari="मी">ABOUT</a></li>
+            <li><a onclick="navigateTo('projects')" class="nav-link script-toggle-nav" data-latin="PROJECTS" data-devanagari="प्रकल्प">PROJECTS</a></li>
+            <li><a onclick="navigateTo('blog')" class="nav-link script-toggle-nav" data-latin="BLOG" data-devanagari="लेखणी">BLOG</a></li>
+            <li><a onclick="navigateTo('friends')" class="nav-link script-toggle-nav" data-latin="FRIENDS" data-devanagari="मैत्री">FRIENDS</a></li>
+        </ul>
+    </nav>
+    
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon sun" id="theme-icon"></span>
+    </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about-page" class="page active">
+    <section>
+        <h1>hello！</h1>
+        
+        <div class="about-text">
+            <p>i am <strong class="script-toggle-content" data-latin="Aryan Vyapari" data-devanagari="आर्यन व्यापारी">Aryan Vyapari</strong> I am 19.</p>
+            <p>I love tinkering and my ultimate goal is to be able to <em>compelle my curiosity to create "value".</em></p>
+            <p>i am passionate about <strong>general engineering and science</strong></p>
+            <p>I'm based in <strong class="script-toggle-content" data-latin="Mumbai" data-devanagari="मुंबई">Mumbai</strong> its surrounding sub-urbs and towns</p>
+            <p>Our universe has some properties and laws that we discovered using our exceptional ability to REASON, eventually we realised that we could exploit these laws and properties in our favour and then help us create "value" or improve upon the existing "value"</p>
+            <p>We called the process <strong>INNOVATION</strong></p>
+            <p>And I absolutely <em>LOVE</em> innovation</p>
+            <p>In my free time I work on pending stuff, or ponder upon existence and try to incorporate <a href="https://en.wikipedia.org/wiki/Choiceless_awareness">J.Krishnamurthy's Choiceless_awareness</a></p>
+        </div>
+        
+        <div class="about-text">
+            <h3>SKILLS, TOOLS, INTERESTS</h3>
+            <ul>
+                <li>C/C++ for embedded systems</li>
+                <li>PCB design & circuit analysis</li>
+                <li>CAD/SolidWorks for mechanical design</li>
+                <li>Philosophy</li>
+                <li>Music (just the listening part)</li>
+            </ul>
+        </div>
+        <div class="current-quests">
+            <h3>CURRENT QUESTS</h3>
+            <ul>
+                <li>exploring semiconductor manufacturing</li>
+                <li>kernel-level device driver development</li>
+                <li>custom PCB design and embedded firmware</li>
+                <li>mechanical design for a long term project</li>
+            </ul>
+        </div>
+        <div class="contact-section">
+            <h2>CONTACT</h2>
+            <p>if you want to talk, vibe or build something cool with me<br>hit me up at</p>
+            
+            <div class="contact-links">
+                <a href="mailto:vyapariaryan642@gmail.com">vyapariaryan642@gmail.com</a>
+                <a href="https://www.linkedin.com/in/aryan-vyapari-67289931b/" target="_blank">LINKEDIN/ARYAN-VYAPARI</a>
+                <a href="https://github.com/4rynv" target="_blank">GITHUB/4RYNV</a>
+                <a href="https://x.com/seriouslyaryan1" target="_blank">X/@seriouslyaryan1</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- PROJECTS PAGE -->
+<div id="projects-page" class="page">
+    <section>
+        <h2 class="script-toggle-title" data-latin="PROJECTS" data-devanagari="प्रकल्प">PROJECTS</h2>
+        
+        <div class="projects-grid">
+            <div class="project-item">
+                <h3>GantryMate-200</h3>
+                <p>A gantry based bot for automating the task of screwing and unscrewing extremely small screws from led panels.</p>
+                <a href="https://github.com/pushkardube/Eklavya_Gantry">Github link</a>
+            </div>
+            
+            <div class="project-item">
+                <h3>Wall-E workshop</h3>
+                <p>Contributed in conducting a workshop on embedded programming and electronics by creating a self-balancing and line following robot.</p>
+                <a href="https://github.com/SRA-VJTI/Wall-E">Github link</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- BLOG PAGE -->
+<!-- <div id="blog-page" class="page">
+    <section>
+        <h2 class="script-toggle-title" data-latin="BLOG" data-devanagari="लेखणी">BLOG</h2>
+        
+        <div class="projects-grid">
+            <div class="project-item">
+                <h3><a href="blog/Value.html" style="color: var(--text-color); text-decoration: none; transition: color 0.2s ease;">Value</a></h3>
+                <p class="blog-date">February 2026</p>
+                <p>My performative attempt to writing</p>
+                <a href="blog/Value.html" style="color: var(--accent-color); text-decoration: none; font-weight: 600; transition: opacity 0.2s ease;">Read more →</a>
+            </div>
+        </div>
+    </section>
+</div> -->
+
+<!-- FRIENDS PAGE -->
+<div id="friends-page" class="page">
+    <section>
+        <h2 class="script-toggle-title" data-latin="FRIENDS" data-devanagari="मैत्री">FRIENDS</h2>
+        <p style="margin-bottom: 2rem;">cool people building cool things</p>
+        
+        <div class="friends-list">
+            <a href="https://sravjti.in/webring/">Webring_SRA</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 4rynv. Built with curiosity and dissatisfaction.</p>
+</footer>
+
+<script src="scripts/script.js"></script>
+
+</body>
+</html>
