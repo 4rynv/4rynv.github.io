@@ -646,7 +646,7 @@ footer a:hover {
 /* Responsive Design - Improved */
 @media (max-width: 768px) {
     :root {
-        --nav-font-size: 1.3rem;
+        --nav-font-size: 1.1rem;
         --title-font-size: 1.5rem;
         --content-font-size: 1rem;
     }
