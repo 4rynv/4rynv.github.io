@@ -179,7 +179,7 @@ header > div {
     margin: 2rem 0;
 }
 
-/* Navigation */
+/* Navigation - Improved Responsiveness */
 nav {
     flex: 1;
 }
@@ -187,8 +187,9 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
     flex-wrap: wrap;
+    align-items: center;
 }
 
 nav a {
@@ -198,21 +199,29 @@ nav a {
     text-transform: uppercase;
     font-size: var(--nav-font-size);
     letter-spacing: 0.5px;
-    padding: 0.3rem 0;
+    padding: 0.5rem clamp(0.5rem, 1.5vw, 1rem);
     border-bottom: 2px solid transparent;
-    transition: border-color 0.2s ease, opacity 0.2s ease;
+    transition: border-color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
     cursor: pointer;
     display: inline-block;
-    min-width: 120px;
     text-align: center;
+    white-space: nowrap;
+    border-radius: 4px;
+    /* Better touch targets on mobile */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav a:hover {
     border-bottom-color: var(--accent-color);
+    background-color: var(--hover-bg);
 }
 
 nav a.active {
     border-bottom-color: var(--accent-color);
+    background-color: var(--hover-bg);
 }
 
 /* Dark Mode Toggle - Engraved Colorless Button */
@@ -634,7 +643,7 @@ footer a:hover {
     color: #999;
 }
 
-/* Responsive */
+/* Responsive Design - Improved */
 @media (max-width: 768px) {
     :root {
         --nav-font-size: 1.3rem;
@@ -678,39 +687,35 @@ footer a:hover {
         font-size: 1.6rem;
     }
     
-    /* Keep nav and theme toggle on same line when possible */
+    /* Improved nav layout for tablets */
     .nav-theme-container {
         flex-direction: row;
         align-items: center;
-        gap: 1.2rem;
+        gap: 1rem;
         flex-wrap: wrap;
     }
     
     nav {
         flex: 1;
-        min-width: 200px;
+        min-width: 250px;
     }
     
     nav ul {
-        flex-wrap: wrap;
+        gap: clamp(0.5rem, 1.5vw, 1rem);
         justify-content: flex-start;
-        width: 100%;
-        gap: 1rem;
     }
     
     nav a {
-        min-width: 85px;
-        padding: 0.25rem 0;
+        padding: 0.4rem 0.6rem;
+        font-size: 1.2rem;
     }
     
-    /* Ensure theme toggle stays visible and functional */
     .theme-toggle {
         width: 40px;
         height: 40px;
         flex-shrink: 0;
     }
     
-    /* Make sure moon/sun icons stay correct size */
     .theme-icon {
         width: 20px;
         height: 20px;
@@ -739,9 +744,48 @@ footer a:hover {
     }
 }
 
+@media (max-width: 600px) {
+    :root {
+        --nav-font-size: 1.1rem;
+        --title-font-size: 1.4rem;
+        --content-font-size: 0.95rem;
+    }
+    
+    /* Stack nav and theme toggle */
+    .nav-theme-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    nav {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    nav ul {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    
+    nav a {
+        flex: 1;
+        padding: 0.5rem 0.4rem;
+        font-size: 1rem;
+    }
+    
+    /* Position theme toggle in top right corner */
+    .theme-toggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+    }
+}
+
 @media (max-width: 480px) {
     :root {
-        --nav-font-size: 1.9rem;
+        --nav-font-size: 0.95rem;
         --title-font-size: 1.3rem;
         --content-font-size: 0.95rem;
     }
@@ -755,7 +799,6 @@ footer a:hover {
         height: 160px;
     }
     
-    /* Ensure background image works on small screens */
     header {
         background-size: cover;
         background-position: center center;
@@ -769,31 +812,18 @@ footer a:hover {
         gap: 0.75rem;
     }
     
-    /* Stack nav and theme toggle on very small screens */
     .nav-theme-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    nav {
-        width: 100%;
+        margin: 1.5rem 0;
     }
     
     nav ul {
-        gap: 0.75rem;
-        width: 100%;
+        gap: 0.4rem;
     }
     
     nav a {
-        min-width: 70px;
-        padding: 0.2rem 0;
-    }
-    
-    /* Position theme toggle to the right on small screens */
-    .theme-toggle {
-        align-self: flex-end;
-        margin-top: -0.5rem;
+        padding: 0.4rem 0.3rem;
+        font-size: 0.9rem;
+        min-height: 40px;
     }
     
     .profile-pic {
@@ -807,6 +837,23 @@ footer a:hover {
     
     .tagline {
         font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    :root {
+        --nav-font-size: 0.85rem;
+    }
+    
+    nav a {
+        padding: 0.4rem 0.2rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
+    }
+    
+    nav ul {
+        gap: 0.3rem;
     }
 }
 
