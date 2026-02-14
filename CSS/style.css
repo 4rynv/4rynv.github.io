@@ -16,8 +16,8 @@
     --card-bg: #ffffff;
     
     /* Font size variables - control both Latin and Devanagari */
-    --nav-font-size: 2.2rem ;
-    --title-font-size: 1.7rem;
+    --nav-font-size: 1.7rem ;
+    --title-font-size: 1.8rem;
     --content-font-size: 1rem;
 }
 
@@ -173,22 +173,22 @@ header > div {
 
 /* Navigation and Theme Toggle Container */
 .nav-theme-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
     align-items: center;
-    gap: 2rem;
-    margin: 1.5rem 0 1rem 0; /* Reduced bottom margin from 2rem to 1rem */
+    margin: 1.5rem 0 1rem 0;
 }
 
 /* Navigation - Improved Responsiveness */
 nav {
-    flex: 1;
+    grid-column: span 4;
+    display: contents;
 }
 
 nav ul {
     list-style: none;
-    display: flex;
-    gap: clamp(0.5rem, 2vw, 1.5rem);
-    flex-wrap: wrap;
+    display: contents;
     align-items: center;
 }
 
@@ -199,19 +199,17 @@ nav a {
     text-transform: uppercase;
     font-size: var(--nav-font-size);
     letter-spacing: 0.5px;
-    padding: 0.5rem clamp(0.5rem, 1.5vw, 1rem);
+    padding: 0;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     white-space: nowrap;
     border-radius: 4px;
-    /* Better touch targets on mobile */
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    height: 50px;
 }
 
 nav a:hover {
@@ -227,8 +225,8 @@ nav a.active {
 /* Dark Mode Toggle - Engraved Colorless Button */
 .theme-toggle {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--bg-color);
     border: none;
@@ -236,8 +234,8 @@ nav a.active {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    position: relative;
     flex-shrink: 0;
+    justify-self: center;
     
     /* Engraved effect */
     box-shadow: 
@@ -260,8 +258,8 @@ nav a.active {
 }
 
 .theme-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     position: relative;
 }
 
@@ -282,14 +280,14 @@ nav a.active {
 
 .theme-icon.sun::before {
     width: 2px;
-    height: 26px;
+    height: 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .theme-icon.sun::after {
-    width: 26px;
+    width: 30px;
     height: 2px;
     top: 50%;
     left: 50%;
@@ -301,8 +299,8 @@ nav a.active {
     background: transparent;
     border-radius: 50%;
     position: relative;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     box-shadow: 
         inset -4px -2px 0 0 var(--text-color);
     opacity: 0.6;
@@ -444,7 +442,6 @@ em {
 
 .script-toggle-title.devanagari {
     font-family: 'Noto Sans Devanagari', 'Space Grotesk', sans-serif;
-    font-size: var(--nav-font-size);
 }
 
 /* Nav links - automatic toggle */
@@ -690,41 +687,50 @@ footer a:hover {
     
     /* Improved nav layout for tablets */
     .nav-theme-container {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
         align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
     }
     
     nav {
-        flex: 1;
-        min-width: 250px;
+        grid-column: span 4;
+        display: contents;
     }
     
     nav ul {
-        gap: clamp(0.5rem, 1.5vw, 1rem);
-        justify-content: flex-start;
+        display: contents;
+        align-items: center;
     }
     
     nav a {
-        padding: 0.4rem 0.6rem;
+        padding: 0;
         font-size: 1.2rem;
+        height: 46px;
     }
     
     .theme-toggle {
-        width: 40px;
-        height: 40px;
-        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        justify-self: center;
     }
     
     .theme-icon {
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 28px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 28px;
     }
     
     .theme-icon.moon {
-        width: 18px;
-        height: 18px;
+        width: 21px;
+        height: 21px;
     }
     
     .logo {
@@ -752,47 +758,50 @@ footer a:hover {
         --content-font-size: 0.95rem;
     }
     
-    /* Stack nav and theme toggle */
+    /* Grid layout for nav and theme toggle */
     .nav-theme-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-        padding-right: 4rem; /* Add padding to prevent overlap with theme toggle */
-        margin: 1rem 0 0.5rem 0; /* Reduced margins */
-        position: relative;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        align-items: center;
+        margin: 1rem 0 0.5rem 0;
     }
     
     nav {
-        width: 100%;
-        min-width: unset;
+        grid-column: span 4;
+        display: contents;
     }
     
     nav ul {
-        justify-content: space-between;
-        gap: 0.5rem;
+        display: contents;
         align-items: center;
     }
     
     nav a {
-        flex: 1;
-        padding: 0.5rem 0.4rem;
+        padding: 0;
         font-size: 1rem;
-        min-height: 44px;
+        height: 44px;
     }
     
-    /* Position theme toggle aligned with nav */
+    /* Position theme toggle in last grid cell */
     .theme-toggle {
-        position: absolute;
-        top: 0;
-        right: 1rem;
-        z-index: 10;
         width: 44px;
         height: 44px;
+        justify-self: center;
+        position: static;
     }
     
     .theme-icon {
         width: 22px;
         height: 22px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 27px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 27px;
     }
     
     .theme-icon.moon {
@@ -831,31 +840,47 @@ footer a:hover {
     }
     
     .nav-theme-container {
-        margin: 1rem 0 0.5rem 0; /* Reduced margins */
-        padding-right: 4rem; /* Ensure padding carries through on smaller devices */
-        position: relative;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        align-items: center;
+        margin: 1rem 0 0.5rem 0;
+    }
+    
+    nav {
+        grid-column: span 4;
+        display: contents;
     }
     
     nav ul {
-        gap: 0.4rem;
+        display: contents;
         align-items: center;
     }
     
     nav a {
-        padding: 0.4rem 0.3rem;
+        padding: 0;
         font-size: 0.9rem;
-        min-height: 40px;
+        height: 40px;
     }
     
     .theme-toggle {
         width: 40px;
         height: 40px;
-        top: 0;
+        justify-self: center;
+        position: static;
     }
     
     .theme-icon {
         width: 20px;
         height: 20px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 25px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 25px;
     }
     
     .theme-icon.moon {
@@ -880,35 +905,51 @@ footer a:hover {
 /* Extra small devices */
 @media (max-width: 360px) {
     :root {
-        --nav-font-size: 1.2rem; /* Increased from 1rem */
+        --nav-font-size: 1.2rem;
     }
     
     .nav-theme-container {
-        padding-right: 4.5rem; /* Increased from 3.5rem to prevent overlap */
-        position: relative;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        align-items: center;
+    }
+    
+    nav {
+        grid-column: span 4;
+        display: contents;
     }
     
     nav ul {
-        gap: 0.2rem; /* Slightly reduced to accommodate larger text */
+        display: contents;
         align-items: center;
     }
     
     nav a {
-        padding: 0.4rem 0.2rem;
-        font-size: 1.2rem; /* Increased from 1rem */
+        padding: 0;
+        font-size: 1.2rem;
         letter-spacing: 0.3px;
-        min-height: 44px;
+        height: 44px;
     }
     
     .theme-toggle {
         width: 44px;
         height: 44px;
-        top: 0;
+        justify-self: center;
+        position: static;
     }
     
     .theme-icon {
         width: 22px;
         height: 22px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 27px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 27px;
     }
     
     .theme-icon.moon {
