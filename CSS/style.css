@@ -16,7 +16,7 @@
     --card-bg: #ffffff;
     
     /* Font size variables - control both Latin and Devanagari */
-    --nav-font-size: 1.8rem ;
+    --nav-font-size: 2.2rem ;
     --title-font-size: 1.7rem;
     --content-font-size: 1rem;
 }
@@ -176,7 +176,7 @@ header > div {
     display: flex;
     align-items: center;
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 1.5rem 0 1rem 0; /* Reduced bottom margin from 2rem to 1rem */
 }
 
 /* Navigation - Improved Responsiveness */
@@ -380,7 +380,7 @@ footer {
 
 /* Typography */
 section {
-    margin: 4rem 0;
+    margin: 2rem 0; /* Reduced from 4rem to 2rem */
 }
 
 h1 {
@@ -444,6 +444,7 @@ em {
 
 .script-toggle-title.devanagari {
     font-family: 'Noto Sans Devanagari', 'Space Grotesk', sans-serif;
+    font-size: var(--nav-font-size);
 }
 
 /* Nav links - automatic toggle */
@@ -646,7 +647,7 @@ footer a:hover {
 /* Responsive Design - Improved */
 @media (max-width: 768px) {
     :root {
-        --nav-font-size: 1.1rem;
+        --nav-font-size: 1.4rem;
         --title-font-size: 1.5rem;
         --content-font-size: 1rem;
     }
@@ -746,7 +747,7 @@ footer a:hover {
 
 @media (max-width: 600px) {
     :root {
-        --nav-font-size: 1.1rem;
+        --nav-font-size: 1.3rem;
         --title-font-size: 1.4rem;
         --content-font-size: 0.95rem;
     }
@@ -756,6 +757,9 @@ footer a:hover {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
+        padding-right: 4rem; /* Add padding to prevent overlap with theme toggle */
+        margin: 1rem 0 0.5rem 0; /* Reduced margins */
+        position: relative;
     }
     
     nav {
@@ -766,26 +770,40 @@ footer a:hover {
     nav ul {
         justify-content: space-between;
         gap: 0.5rem;
+        align-items: center;
     }
     
     nav a {
         flex: 1;
         padding: 0.5rem 0.4rem;
         font-size: 1rem;
+        min-height: 44px;
     }
     
-    /* Position theme toggle in top right corner */
+    /* Position theme toggle aligned with nav */
     .theme-toggle {
         position: absolute;
-        top: 1rem;
+        top: 0;
         right: 1rem;
         z-index: 10;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .theme-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .theme-icon.moon {
+        width: 20px;
+        height: 20px;
     }
 }
 
 @media (max-width: 480px) {
     :root {
-        --nav-font-size: 0.95rem;
+        --nav-font-size: 1.1rem;
         --title-font-size: 1.3rem;
         --content-font-size: 0.95rem;
     }
@@ -813,17 +831,36 @@ footer a:hover {
     }
     
     .nav-theme-container {
-        margin: 1.5rem 0;
+        margin: 1rem 0 0.5rem 0; /* Reduced margins */
+        padding-right: 4rem; /* Ensure padding carries through on smaller devices */
+        position: relative;
     }
     
     nav ul {
         gap: 0.4rem;
+        align-items: center;
     }
     
     nav a {
         padding: 0.4rem 0.3rem;
         font-size: 0.9rem;
         min-height: 40px;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        top: 0;
+    }
+    
+    .theme-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .theme-icon.moon {
+        width: 18px;
+        height: 18px;
     }
     
     .profile-pic {
@@ -843,17 +880,40 @@ footer a:hover {
 /* Extra small devices */
 @media (max-width: 360px) {
     :root {
-        --nav-font-size: 0.85rem;
+        --nav-font-size: 1.2rem; /* Increased from 1rem */
+    }
+    
+    .nav-theme-container {
+        padding-right: 4.5rem; /* Increased from 3.5rem to prevent overlap */
+        position: relative;
+    }
+    
+    nav ul {
+        gap: 0.2rem; /* Slightly reduced to accommodate larger text */
+        align-items: center;
     }
     
     nav a {
         padding: 0.4rem 0.2rem;
-        font-size: 0.85rem;
+        font-size: 1.2rem; /* Increased from 1rem */
         letter-spacing: 0.3px;
+        min-height: 44px;
     }
     
-    nav ul {
-        gap: 0.3rem;
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        top: 0;
+    }
+    
+    .theme-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .theme-icon.moon {
+        width: 20px;
+        height: 20px;
     }
 }
 
