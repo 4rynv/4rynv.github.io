@@ -1,1 +1,1 @@
-[Clickity click]((https://4rynv.github.io/))
+[Clickity click](https://4rynv.github.io/)
