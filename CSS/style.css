@@ -79,7 +79,7 @@ header::after {
     z-index: 0;
     
     /* Light mode with daytime sky image */
-    background-image: url('/images/PlaeBDot.jpg');
+    background-image: url('../images/PlaeBDot.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -126,7 +126,7 @@ header.theme-changing::after {
 
 [data-theme="dark"] header::after {
     /* Night sky with your image */
-    background-image: url('/images/background1.jpeg');
+    background-image: url('../images/background1.jpeg');
 }
 
 [data-theme="dark"] header {
