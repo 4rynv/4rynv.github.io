@@ -13,8 +13,9 @@
     --accent-color: #0052cc;
     --border-color: #e0e0e0;
     --hover-bg: #e8e8e8;
-    --card-bg: #ffffff;
-    
+    --grid-line: rgba(0, 82, 204, 0.05);
+    --grid-dot: rgba(0, 82, 204, 0.09);
+
     /* Font size variables - control both Latin and Devanagari */
     --nav-font-size: 1.7rem ;
     --title-font-size: 1.8rem;
@@ -27,19 +28,27 @@
     --accent-color: #ff9500;
     --border-color: #2a2a2a;
     --hover-bg: #1a1a1a;
-    --card-bg: #1a1a1a;
+    --grid-line: rgba(255, 149, 0, 0.05);
+    --grid-dot: rgba(255, 149, 0, 0.09);
 }
 
 body {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.7;
     color: var(--text-color);
-    background: var(--bg-color);
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 32px 32px, 32px 32px, 32px 32px;
+    background-position: -1px -1px, -1px -1px, -1px -1px;
+    background-attachment: fixed;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 1.5rem 2rem 1.5rem;
     font-size: 17px;
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Sky Header - Full Width */

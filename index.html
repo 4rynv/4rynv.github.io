@@ -23,10 +23,10 @@
 <div class="nav-theme-container">
     <nav>
         <ul>
-            <li><a onclick="navigateTo('about')" class="nav-link script-toggle-nav active" data-latin="ABOUT" data-devanagari="मी">ABOUT</a></li>
-            <li><a onclick="navigateTo('projects')" class="nav-link script-toggle-nav" data-latin="PROJECTS" data-devanagari="प्रकल्प">PROJECTS</a></li>
-            <li><a onclick="navigateTo('blog')" class="nav-link script-toggle-nav" data-latin="BLOG" data-devanagari="लेखणी">BLOG</a></li>
-            <li><a onclick="navigateTo('friends')" class="nav-link script-toggle-nav" data-latin="FRIENDS" data-devanagari="मैत्री">FRIENDS</a></li>
+            <li><a href="#about" onclick="navigateTo('about', event)" class="nav-link script-toggle-nav active" data-latin="ABOUT" data-devanagari="मी">ABOUT</a></li>
+            <li><a href="#projects" onclick="navigateTo('projects', event)" class="nav-link script-toggle-nav" data-latin="PROJECTS" data-devanagari="प्रकल्प">PROJECTS</a></li>
+            <li><a href="#blog" onclick="navigateTo('blog', event)" class="nav-link script-toggle-nav" data-latin="BLOG" data-devanagari="लेखणी">BLOG</a></li>
+            <li><a href="#friends" onclick="navigateTo('friends', event)" class="nav-link script-toggle-nav" data-latin="FRIENDS" data-devanagari="मैत्री">FRIENDS</a></li>
         </ul>
     </nav>
     
@@ -41,7 +41,7 @@
         <h1>hello！</h1>
         
         <div class="about-text">
-            <p>i am <strong class="script-toggle-content" data-latin="Aryan Vyapari" data-devanagari="आर्यन व्यापारी">Aryan Vyapari</strong> I am 19.</p>
+            <p>My name is <strong class="script-toggle-content" data-latin="Aryan Vyapari" data-devanagari="आर्यन व्यापारी">Aryan Vyapari</strong>. I am 20.</p>
             <p>I love tinkering and my ultimate goal is to be able to <em>compelle my curiosity to create "value".</em></p>
             <p>i am passionate about <strong>general engineering and science</strong></p>
             <p>I'm based in <strong class="script-toggle-content" data-latin="Mumbai" data-devanagari="मुंबई">Mumbai</strong> its surrounding sub-urbs and towns</p>
@@ -76,9 +76,9 @@
             
             <div class="contact-links">
                 <a href="mailto:vyapariaryan642@gmail.com">vyapariaryan642@gmail.com</a>
-                <a href="https://www.linkedin.com/in/aryan-vyapari-67289931b/" target="_blank">LINKEDIN/ARYAN-VYAPARI</a>
-                <a href="https://github.com/4rynv" target="_blank">GITHUB/4RYNV</a>
-                <a href="https://x.com/4rynv" target="_blank">X/@4rynv</a>
+                <a href="https://www.linkedin.com/in/aryan-vyapari-67289931b/" target="_blank" rel="noopener noreferrer">LINKEDIN/ARYAN-VYAPARI</a>
+                <a href="https://github.com/4rynv" target="_blank" rel="noopener noreferrer">GITHUB/4RYNV</a>
+                <a href="https://x.com/4rynv" target="_blank" rel="noopener noreferrer">X/@4rynv</a>
             </div>
         </div>
     </section>
@@ -93,7 +93,7 @@
             <div class="project-item">
                 <h3>GantryMate-200</h3>
                 <p>A gantry based bot for automating the task of screwing and unscrewing extremely small screws from led panels.</p>
-                <a href="https://github.com/pushkardube/Eklavya_Gantry">Github link</a>
+                <a href="https://github.com/SarvaarthN/Eklavya_Gantry">Github link</a>
             </div>
             
             <div class="project-item">
@@ -128,13 +128,13 @@
         <p style="margin-bottom: 2rem;">cool people building cool things</p>
         
         <div class="friends-list">
-            <a href="https://sravjti.in/webring/">Webring_SRA</a>
+            <a href="https://sravjti.in/webring/" class="friend-link">Webring_SRA</a>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 4rynv. Built with curiosity and dissatisfaction.</p>
+    <p>&copy; 2026 4rynv. Built with curiosity and never ending dissatisfaction.</p>
 </footer>
 
 <script src="scripts/script.js"></script>
