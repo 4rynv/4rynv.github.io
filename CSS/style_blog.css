@@ -13,10 +13,12 @@
     --accent-color: #0052cc;
     --border-color: #e0e0e0;
     --hover-bg: #e8e8e8;
-    --card-bg: #ffffff;
-    
-    --nav-font-size: 1rem;
-    --title-font-size: 1.7rem;
+    --grid-line: rgba(0, 82, 204, 0.05);
+    --grid-dot: rgba(0, 82, 204, 0.09);
+
+    /* Updated to match main CSS */
+    --nav-font-size: 1.7rem;
+    --title-font-size: 1.8rem;
     --content-font-size: 1rem;
 }
 
@@ -26,19 +28,27 @@
     --accent-color: #ff9500;
     --border-color: #2a2a2a;
     --hover-bg: #1a1a1a;
-    --card-bg: #1a1a1a;
+    --grid-line: rgba(255, 149, 0, 0.05);
+    --grid-dot: rgba(255, 149, 0, 0.09);
 }
 
 body {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.7;
     color: var(--text-color);
-    background: var(--bg-color);
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 32px 32px, 32px 32px, 32px 32px;
+    background-position: -1px -1px, -1px -1px, -1px -1px;
+    background-attachment: fixed;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 1.5rem 2rem 1.5rem;
     font-size: 17px;
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Blog Page Container */
@@ -55,11 +65,11 @@ body {
     z-index: 1000;
 }
 
-/* Dark Mode Toggle - Engraved Colorless Button */
+/* Dark Mode Toggle - Engraved Colorless Button - Updated to match main CSS */
 .theme-toggle {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--bg-color);
     border: none;
@@ -91,8 +101,8 @@ body {
 }
 
 .theme-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     position: relative;
 }
 
@@ -113,14 +123,14 @@ body {
 
 .theme-icon.sun::before {
     width: 2px;
-    height: 26px;
+    height: 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .theme-icon.sun::after {
-    width: 26px;
+    width: 30px;
     height: 2px;
     top: 50%;
     left: 50%;
@@ -132,8 +142,8 @@ body {
     background: transparent;
     border-radius: 50%;
     position: relative;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     box-shadow: 
         inset -4px -2px 0 0 var(--text-color);
     opacity: 0.6;
@@ -190,6 +200,8 @@ p {
 
 strong {
     font-weight: 700;
+    display: inline;
+    font-size: inherit;
 }
 
 em {
@@ -355,6 +367,20 @@ a:hover {
     color: #999;
 }
 
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    transition: border-color 0.5s ease;
+}
+
+.comments-section h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
 /* Highlighted sections */
 .highlight-section {
     background: var(--hover-bg);
@@ -391,6 +417,7 @@ footer a {
 }
 
 footer a:hover {
+    opacity: 0.7;
     text-decoration: underline;
 }
 
@@ -398,11 +425,12 @@ footer a:hover {
     color: #999;
 }
 
-/* Responsive */
+/* Responsive Design - Updated to match main CSS */
 @media (max-width: 768px) {
     :root {
-        --nav-font-size: 0.9rem;
+        --nav-font-size: 1.4rem;
         --title-font-size: 1.5rem;
+        --content-font-size: 1rem;
     }
     
     body {
@@ -410,27 +438,32 @@ footer a:hover {
         font-size: 16px;
     }
     
-    /* Ensure theme toggle stays visible and functional */
-    .theme-toggle {
-        width: 40px;
-        height: 40px;
-        flex-shrink: 0;
+    .blog-theme-toggle-container {
+        top: 1.5rem;
+        right: 1.5rem;
     }
     
-    /* Make sure moon/sun icons stay correct size */
+    .theme-toggle {
+        width: 46px;
+        height: 46px;
+    }
+    
     .theme-icon {
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 28px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 28px;
     }
     
     .theme-icon.moon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .blog-theme-toggle-container {
-        top: 1rem;
-        right: 1rem;
+        width: 21px;
+        height: 21px;
     }
     
     .blog-title {
@@ -446,10 +479,47 @@ footer a:hover {
     }
 }
 
+@media (max-width: 600px) {
+    :root {
+        --nav-font-size: 1.3rem;
+        --title-font-size: 1.4rem;
+        --content-font-size: 0.95rem;
+    }
+    
+    .blog-theme-toggle-container {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .theme-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 27px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 27px;
+    }
+    
+    .theme-icon.moon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 @media (max-width: 480px) {
     :root {
-        --nav-font-size: 0.85rem;
+        --nav-font-size: 1.1rem;
         --title-font-size: 1.3rem;
+        --content-font-size: 0.95rem;
     }
     
     body {
@@ -457,7 +527,11 @@ footer a:hover {
         font-size: 15px;
     }
     
-    /* Position theme toggle to the right on small screens */
+    .blog-theme-toggle-container {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    
     .theme-toggle {
         width: 40px;
         height: 40px;
@@ -468,14 +542,17 @@ footer a:hover {
         height: 20px;
     }
     
+    .theme-icon.sun::before {
+        height: 25px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 25px;
+    }
+    
     .theme-icon.moon {
         width: 18px;
         height: 18px;
-    }
-    
-    .blog-theme-toggle-container {
-        top: 0.75rem;
-        right: 0.75rem;
     }
     
     .blog-title {
@@ -492,7 +569,71 @@ footer a:hover {
     }
 }
 
+@media (max-width: 360px) {
+    :root {
+        --nav-font-size: 1.2rem;
+    }
+    
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .theme-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .theme-icon.sun::before {
+        height: 27px;
+    }
+    
+    .theme-icon.sun::after {
+        width: 27px;
+    }
+    
+    .theme-icon.moon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 ::selection {
     background: var(--hover-bg);
     color: var(--text-color);
+}
+
+.blog-image {
+    max-width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin: 1.5rem auto;
+}
+
+.blog-image-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.blog-image-row .blog-image {
+    margin: 0;
+    width: calc(33.333% - 0.667rem);
+    height: 220px;
+    padding: 0.5rem;
+    background: var(--hover-bg);
+    object-fit: contain;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .blog-image-row {
+        flex-direction: column;
+    }
+
+    .blog-image-row .blog-image {
+        width: 100%;
+    }
 }

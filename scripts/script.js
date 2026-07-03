@@ -34,13 +34,20 @@ function toggleTheme() {
 }
 
 // Navigation
-function navigateTo(page) {
+function navigateTo(page, evt) {
+    if (evt) evt.preventDefault();
+
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(page + '-page').classList.add('active');
-    
+
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    event.target.classList.add('active');
-    
+    if (evt && evt.target) {
+        evt.target.classList.add('active');
+    } else {
+        const navLink = document.querySelector(`.nav-link[href="#${page}"]`);
+        if (navLink) navLink.classList.add('active');
+    }
+
     window.scrollTo(0, 0);
 }
 
@@ -139,14 +146,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.script-toggle-content').forEach(element => {
         setupContentToggle(element);
     });
-    
+
     // Page titles - fade toggle
     document.querySelectorAll('.script-toggle-title').forEach(element => {
         setupTitleToggle(element);
     });
-    
+
     // Nav links - automatic random toggle
     document.querySelectorAll('.script-toggle-nav').forEach(link => {
         setupNavToggle(link);
     });
+
+    // Honor a #page hash on load (e.g. links from the blog back to a specific tab)
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash + '-page')) {
+        navigateTo(hash);
+    }
 });
