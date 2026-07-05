@@ -637,3 +637,117 @@ footer a:hover {
         width: 100%;
     }
 }
+
+/* ---- Hero image slot (placeholder until an image is added) ---- */
+.blog-hero {
+    margin: 0 0 2.5rem;
+}
+
+.blog-hero img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.blog-hero-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    color: #999;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* ---- Epigraph under the title ---- */
+.blog-epigraph {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #666;
+    letter-spacing: 0.3px;
+    margin: 0 0 2.5rem;
+    transition: color 0.5s ease;
+}
+
+[data-theme="dark"] .blog-epigraph {
+    color: #999;
+}
+
+/* ---- Drop cap on the opening paragraph ---- */
+.first-para::first-letter {
+    -webkit-initial-letter: 2;
+    initial-letter: 2;
+    margin-right: 0.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    transition: color 0.5s ease;
+}
+
+/* ---- Section dividers (ornament above every heading but the first) ---- */
+.blog-content h2:not(:first-of-type)::before {
+    content: "* * *";
+    display: block;
+    text-align: center;
+    color: var(--accent-color);
+    letter-spacing: 0.5em;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-bottom: 2.5rem;
+    transition: color 0.5s ease;
+}
+
+/* ---- Pull-quote (distinct from the bordered blockquote) ---- */
+.blog-content blockquote.pull-quote {
+    border-left: none;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    background: none;
+    border-radius: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-color);
+    max-width: 90%;
+    padding: 1.25rem 1.5rem;
+    margin: 2.5rem auto;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+/* ---- Priority list as a numbered stack ---- */
+.blog-content ol.priority-list {
+    list-style: none;
+    counter-reset: priority;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.blog-content ol.priority-list li {
+    counter-increment: priority;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--hover-bg);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.blog-content ol.priority-list li::before {
+    content: counter(priority);
+    position: static;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    min-width: 1.5rem;
+    text-align: center;
+}
