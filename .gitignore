@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local-only blog scaffold — never publish
+blog/template.html
