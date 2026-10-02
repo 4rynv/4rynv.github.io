@@ -90,17 +90,107 @@
         <h2 class="script-toggle-title" data-latin="PROJECTS" data-devanagari="प्रकल्प">PROJECTS</h2>
         
         <div class="projects-grid">
-            <div class="project-item">
-                <h3>GantryMate-200</h3>
-                <p>A gantry based bot for automating the task of screwing and unscrewing extremely small screws from led panels.</p>
-                <a href="https://github.com/SarvaarthN/Eklavya_Gantry">Github link</a>
-            </div>
-            
-            <div class="project-item">
-                <h3>Wall-E workshop</h3>
-                <p>Contributed in conducting a workshop on embedded programming and electronics by creating a self-balancing and line following robot.</p>
-                <a href="https://github.com/SRA-VJTI/Wall-E">Github link</a>
-            </div>
+            <article class="project-item" aria-labelledby="vacdepoctrl-title">
+                <div class="project-heading">
+                    <h3 id="vacdepoctrl-title">VacDepoctrl</h3>
+                    <span class="project-status">In progress</span>
+                </div>
+                <p>A Raspberry Pi-based vacuum deposition controller for monitoring chamber pressure, argon flow, and turbo pump speed, with an operator interface and hardware interlocks for the sputtering process.</p>
+                <div class="project-gallery">
+                    <figure>
+                        <a href="images/projects/vacdepoctrl-setup.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Open full-size VacDepoctrl setup photograph">
+                            <img src="images/projects/vacdepoctrl-setup.jpeg" alt="Vacuum deposition setup with the chamber, pumps, pressure gauges, and control electronics." width="3072" height="4080" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>The vacuum deposition setup.</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="images/projects/vacdepoctrl-gui.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Open full-size VacDepoctrl GUI screenshot">
+                            <img src="images/projects/vacdepoctrl-gui.jpeg" alt="VacDepoctrl GUI in the idle state, showing process controls and pressure, argon flow, plasma, and turbo pump monitoring panels." width="1280" height="880" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>The controller GUI: process controls and sensor readings.</figcaption>
+                    </figure>
+                </div>
+                <a href="https://github.com/4rynv/VacDepoctrl">View source →</a>
+            </article>
+            <article class="project-item" aria-labelledby="gantry-title">
+                <div class="project-heading">
+                    <h3 id="gantry-title">GantryMate-200</h3>
+                    <span class="project-status">Partially complete</span>
+                </div>
+                <p>A three-axis gantry for automating the screwing and unscrewing of miniature screws on LED panels. My work on this team project focused on ESP32 firmware and hardware setup for motion control, homing, and positioning.</p>
+                <div class="project-gallery">
+                    <figure>
+                        <a href="images/projects/gantrymate-200-cad.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size GantryMate-200 CAD image">
+                            <img src="images/projects/gantrymate-200-cad.png" alt="CAD assembly of GantryMate-200 showing the gantry rails, stepper motors, and central carriage above the work surface." width="1236" height="651" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="images/projects/gantrymate-200-pcb.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size GantryMate-200 PCB image">
+                            <img src="images/projects/gantrymate-200-pcb.png" alt="GantryMate-200 controller PCB showing the ESP32 module, motor driver footprints, and connectors." width="1780" height="1144" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                </div>
+                <a href="https://github.com/SarvaarthN/Eklavya_Gantry">View source →</a>
+            </article>
+
+            <article class="project-item" aria-labelledby="lithography-title">
+                <div class="project-heading">
+                    <h3 id="lithography-title">Litho-Lite</h3>
+                    <span class="project-status">In progress</span>
+                </div>
+                <p>A maskless lithography build using a DLP LightCrafter 2000 and BeagleBone Black to project digital patterns. Current work covers the projection setup, board configuration, and preparing images for the DLP.</p>
+                <div class="project-gallery">
+                    <figure>
+                        <a href="images/projects/litho-lite-1.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Litho-Lite photograph 1">
+                            <img src="images/projects/litho-lite-1.png" alt="Litho-Lite optical setup on a lab bench, with a laptop displaying a pattern." width="2742" height="2879" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="images/projects/litho-lite-3.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Litho-Lite photograph 2">
+                            <img src="images/projects/litho-lite-3.png" alt="Litho-Lite projection electronics and red mount held in front of the CAD assembly." width="1600" height="1204" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="images/projects/litho-lite-checkerboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Litho-Lite photograph 3">
+                            <img src="images/projects/litho-lite-checkerboard.png" alt="Checkerboard pattern imaged with the Litho-Lite setup." width="1920" height="1200" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="project-item" aria-labelledby="walle-title">
+                <div class="project-heading">
+                    <h3 id="walle-title">WALL-E</h3>
+                    <span class="project-status">Contributions merged</span>
+                </div>
+                <p>Contributed to SRA-VJTI's WALL-E robot firmware and shared board component library. I added the web based pid tuning server's IP address to the OLED alongside the PID values, making it accessible directly on the robot for line following and self balancing.</p>
+                <div class="project-gallery">
+                    <figure>
+                        <a href="images/projects/walle-oled-ip.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full-size WALL-E OLED demonstration photograph">
+                            <img src="images/projects/walle-oled-ip.jpg" alt="WALL-E robot with its OLED displaying PID values and the web tuning server IP address." width="1280" height="960" loading="lazy" decoding="async">
+                        </a>
+                        <figcaption>Testing the IP address display on WALL-E, from my contribution PR.</figcaption>
+                    </figure>
+                </div>
+                <a href="https://github.com/SRA-VJTI/Wall-E/pull/171">WALL-E contribution →</a>
+                <br>
+                <a href="https://github.com/SRA-VJTI/sra-board-component/pull/106">Board component contribution →</a>
+            </article>
+
+            <article class="project-item" aria-labelledby="logger-title">
+                <div class="project-heading">
+                    <h3 id="logger-title">Vibration logger</h3>
+                    <span class="project-status">Complete</span>
+                </div>
+                <p>A custom PCB for a battery-powered, ESP32-based vibration logger, designed for a client. The work covered schematic design, PCB layout, component sourcing, and preparation of manufacturing files.</p>
+                <div class="project-gallery">
+                    <figure>
+                        <a href="images/projects/vibration-logger-pcb.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size vibration logger PCB render">
+                            <img src="images/projects/vibration-logger-pcb.png" alt="3D render of the vibration logger node PCB, with component footprints, connectors, and mounting holes." width="1780" height="1598" loading="lazy" decoding="async">
+                        </a>
+                    </figure>
+                </div>
+            </article>
         </div>
     </section>
 </div>
