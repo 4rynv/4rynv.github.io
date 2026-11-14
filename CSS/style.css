@@ -473,13 +473,15 @@ em {
     margin-bottom: 0;
 }
 
-.about-text a {
+.about-text a,
+.current-quests a {
     color: var(--accent-color);
     text-decoration: underline;
     transition: opacity 0.2s ease;
 }
 
-.about-text a:hover {
+.about-text a:hover,
+.current-quests a:hover {
     opacity: 0.7;
 }
 
