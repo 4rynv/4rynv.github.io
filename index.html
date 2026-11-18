@@ -81,6 +81,19 @@
                 <a href="https://x.com/4rynv" target="_blank" rel="noopener noreferrer">X/@4rynv</a>
             </div>
         </div>
+        <!-- photo wall: drifts on its own, pauses while you drag/swipe/hover; filled by scripts/photos.js -->
+        <div class="photo-wall" role="region" aria-label="Photos">
+            <div class="photo-track"></div>
+        </div>
+        <dialog class="photo-viewer" aria-label="Photo viewer">
+            <div class="viewer-stage">
+                <img alt="">
+            </div>
+            <button type="button" class="viewer-prev" aria-label="Previous photo">&larr;</button>
+            <button type="button" class="viewer-next" aria-label="Next photo">&rarr;</button>
+            <button type="button" class="viewer-close" aria-label="Close">&times;</button>
+            <span class="photo-count"></span>
+        </dialog>
     </section>
 </div>
 
@@ -228,6 +241,7 @@
 </footer>
 
 <script src="scripts/script.js"></script>
+<script src="scripts/photos.js"></script>
 
 </body>
 </html>

@@ -5,3 +5,9 @@ blog/template.html
 
 # Claude Code conversation exports — never publish
 20[0-9][0-9]-[0-9][0-9]-*.txt
+
+# Original full-size photos; the site uses the WebP copies in photos/
+photos-src/
+
+# Built from photos/ by tools/build_photos.py (locally) and by the deploy Action (live)
+photos.json
