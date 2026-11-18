@@ -84,8 +84,8 @@ header::after {
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Rise animation */
-    animation: backgroundRise 1.5s ease-out;
+    /* Fade in on page load (and on theme change, below) */
+    animation: fadeOnly 1.5s ease-out;
     transition: opacity 0.8s ease;
 }
 
@@ -108,20 +108,14 @@ header::before {
     opacity: 0;
 }
 
-@keyframes backgroundRise {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+@keyframes fadeOnly {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Trigger animation on theme change */
 header.theme-changing::after {
-    animation: backgroundRise 1s ease-out;
+    animation: fadeOnly 1s ease-out;
 }
 
 [data-theme="dark"] header::after {
@@ -349,9 +343,12 @@ nav a.active {
 }
 
 /* Page load animations */
+.profile-pic {
+    animation: fadeOnly 1.2s ease-out 0.3s both;
+}
+
 .logo,
 .tagline,
-.profile-pic,
 .nav-theme-container,
 nav {
     animation: fadeInSlow 1.2s ease-out 0.3s both;
@@ -1056,4 +1053,156 @@ footer a:hover {
 ::selection {
     background: var(--hover-bg);
     color: var(--text-color);
+}
+
+/* ---- photo wall under CONTACT: full-width, drifts on its own (scripts/photos.js) ---- */
+.photo-wall {
+    --wall-h: clamp(260px, 56vh, 520px);
+    --gap: 8px;
+    --cell: calc((var(--wall-h) - 5 * var(--gap)) / 6);
+    width: 100vw;
+    margin: 0 0 2rem calc(50% - 50vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.photo-wall::-webkit-scrollbar {
+    display: none;
+}
+
+.photo-wall.dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.photo-wall.dragging .photo-tile {
+    pointer-events: none;
+}
+
+.photo-track {
+    display: flex;
+    gap: var(--gap);
+    width: max-content;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-rows: repeat(6, var(--cell));
+    grid-auto-columns: var(--cell);
+    grid-auto-flow: column dense;
+    gap: var(--gap);
+}
+
+.photo-tile {
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--hover-bg);
+    cursor: zoom-in;
+}
+
+.photo-tile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-tile:hover img {
+    transform: scale(1.04);
+}
+
+.photo-tile:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.photo-viewer button {
+    font: inherit;
+    font-size: 1.3rem;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* the viewer: always dark, whatever the site theme */
+.photo-viewer {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #e0e0e0;
+}
+
+.photo-viewer::backdrop {
+    background: rgba(0, 0, 0, 0.92);
+}
+
+.viewer-stage {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 56px 72px;
+    box-sizing: border-box;
+}
+
+.viewer-stage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.photo-viewer button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.photo-viewer button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.viewer-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.viewer-next { right: 16px; top: 50%; transform: translateY(-50%); }
+.viewer-close { right: 16px; top: 16px; }
+
+.photo-count {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .photo-wall {
+        --wall-h: clamp(220px, 46vh, 380px);
+        --gap: 6px;
+    }
+
+    .viewer-stage {
+        padding: 56px 8px;
+    }
+
+    .viewer-prev,
+    .viewer-next {
+        top: auto;
+        bottom: 8px;
+        transform: none;
+    }
 }
