@@ -8,6 +8,16 @@ if (currentTheme === 'dark') {
     themeIcon.classList.add('moon');
 }
 
+// Tab icon follows the site theme. Browsers often ignore an edited href, so put in a fresh <link> instead
+function setFavicon(theme) {
+    const icon = document.createElement('link');
+    icon.rel = 'icon';
+    icon.type = 'image/png';
+    icon.href = `images/favicon-${theme}.png`;
+    document.querySelector('link[rel="icon"]').replaceWith(icon);
+}
+setFavicon(currentTheme);
+
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const header = document.querySelector('header');
@@ -18,11 +28,13 @@ function toggleTheme() {
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
+        setFavicon('light');
         themeIcon.classList.remove('moon');
         themeIcon.classList.add('sun');
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        setFavicon('dark');
         themeIcon.classList.remove('sun');
         themeIcon.classList.add('moon');
     }
